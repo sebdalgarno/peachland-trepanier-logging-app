@@ -13,8 +13,8 @@ export const mapbox_style =
 export const coordinates = [-119.8738, 49.86277];
 
 export const bounds = [
-  [-119.8738, 49.86277],
-  [-119.8738, 49.86277],
+  [-119.8, 49.7],
+  [-120.1, 50.02],
 ];
 
 export const year_min = 1965;
