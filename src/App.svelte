@@ -185,13 +185,27 @@
   }
 </style>
 
-<div class="header">
-  <h1 class="inline title">Kettle Watershed Logging 1965-2020</h1>
+<header
+  class="py-1 w-full absolute bg-black text-gray-500 p-5 bg-opacity-50
+  inline-block text-left align-middle">
+  A History of Logging in Peachland and Trepanier Watersheds 1965-2020
+  <div class="float-right relative">
+    <Modal>
+      <ModalAbout />
+    </Modal>
+  </div>
+
+</header>
+
+<!-- <div class="header">
+  <h1 class="inline title">
+    A History of Logging in Peachland and Trepanier Watersheds 1965-2020
+  </h1>
   <Modal>
     <ModalAbout />
   </Modal>
 
-</div>
+</div> -->
 
 <div class="legend ">
   <Legend {palette} {single} {map_palette} {map_palette_single} />

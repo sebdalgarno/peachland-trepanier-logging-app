@@ -2,18 +2,26 @@
   "name": "svelte-app",
   "version": "1.0.0",
   "scripts": {
-    "build": "rollup -c",
-    "dev": "rollup -c -w",
-    "start": "sirv public"
+    "watch:tailwind": "postcss public/tailwind.css -o public/index.css -w",
+    "build:tailwind": "cross-env NODE_ENV=production postcss public/tailwind.css -o public/index.css",
+    "build": "yarn run build:tailwind && rollup -c",
+    "start": "sirv public",
+    "serve": "serve public -p 80",
+    "dev": "concurrently \"rollup -c -w\" \"yarn run watch:tailwind\""
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^14.0.0",
     "@rollup/plugin-node-resolve": "^8.0.0",
+    "autoprefixer": "^9.8.6",
+    "concurrently": "^5.3.0",
+    "cross-env": "^7.0.2",
+    "postcss-cli": "^7.1.2",
     "rollup": "^2.3.4",
     "rollup-plugin-livereload": "^2.0.0",
     "rollup-plugin-svelte": "^6.0.0",
     "rollup-plugin-terser": "^7.0.2",
-    "svelte": "^3.0.0"
+    "svelte": "^3.0.0",
+    "tailwindcss": "^1.8.3"
   },
   "dependencies": {
     "@smui/button": "^1.0.0",

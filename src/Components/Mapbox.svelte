@@ -163,6 +163,40 @@
       done = true;
     });
 
+    var popup = new mapbox.Popup({
+      closeButton: false,
+      closeOnClick: false
+    });
+
+    map.on("mouseenter", "logged_simp", function(e) {
+      // Change the cursor style as a UI indicator.
+      map.getCanvas().style.cursor = "pointer";
+
+      var coordinates = e.lngLat;
+      var description = e.features[0].properties.year;
+
+      console.log(coordinates);
+      console.log(description);
+
+      // Ensure that if the map is zoomed out such that multiple
+      // copies of the feature are visible, the popup appears
+      // over the copy being pointed to.
+      while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+      }
+
+      // Populate the popup and set its coordinates
+      // based on the feature found.
+      popup
+        .setLngLat(coordinates)
+        .setHTML(description)
+        .addTo(map);
+    });
+
+    map.on("mouseleave", "logged_simp", function() {
+      map.getCanvas().style.cursor = "";
+      popup.remove();
+    });
     // map.moveLayer("basemap");
     // map.moveLayer("logged_simp");
   });
@@ -172,6 +206,12 @@
   .map {
     width: 100%;
     height: 100%;
+  }
+
+  .mapbox-popup {
+    z-index: 1000;
+    max-width: 400px;
+    font: 12px/20px "Helvetica Neue", Arial, Helvetica, sans-serif;
   }
 </style>
 
