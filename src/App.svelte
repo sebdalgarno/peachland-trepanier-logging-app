@@ -121,18 +121,6 @@
     display: inline-block;
   }
 
-  .header {
-    position: fixed;
-    padding: 0 1em;
-    top: 0;
-    left: 0;
-    height: 4em;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 100;
-    border-bottom-right-radius: 5%;
-    vertical-align: middle;
-  }
-
   .buttons {
     /* bottom: 40%; */
     /* position: relative; */
@@ -170,15 +158,11 @@
       width: 100%;
       height: 40%;
     }
-    .year {
-      font-size: 2.5rem;
-    }
+
     .title {
       display: none;
     }
-    .header {
-      background: none;
-    }
+
     .story {
       display: none;
     }
@@ -186,26 +170,13 @@
 </style>
 
 <header
-  class="py-1 w-full absolute bg-black text-gray-500 p-5 bg-opacity-50
-  inline-block text-left align-middle">
+  class="py-2 w-full absolute bg-black text-gray-500 text-1.5 p-5 bg-opacity-50
+  z-50">
   A History of Logging in Peachland and Trepanier Watersheds 1965-2020
-  <div class="float-right relative">
-    <Modal>
-      <ModalAbout />
-    </Modal>
-  </div>
-
-</header>
-
-<!-- <div class="header">
-  <h1 class="inline title">
-    A History of Logging in Peachland and Trepanier Watersheds 1965-2020
-  </h1>
   <Modal>
     <ModalAbout />
   </Modal>
-
-</div> -->
+</header>
 
 <div class="legend ">
   <Legend {palette} {single} {map_palette} {map_palette_single} />
@@ -218,13 +189,12 @@
     {:else}
       <Button caption={'all years'} on:single-year={toggleSingle} />
     {/if}
-
-  </div>
-  <p class="year">{year}</p>
-  <div class="buttons extras increment ">
     <Button caption={'+'} on:add-year={addYear} />
     <Button caption={'-'} on:minus-year={minusYear} />
+
   </div>
+  <p class="text-2">{year}</p>
+  <div class="buttons extras increment " />
 
   <div class="sliderContainer">
     <Slider class="mdc-slider" bind:value={slider_value} />
@@ -232,6 +202,6 @@
   <Chart {year} {single} {palette} {map_palette} {map_palette_single} />
 </div>
 
-<div class="pane map">
+<div class="w-full h-full">
   <Map {year} {single} {map_palette} {map_palette_single} {bounds} />
 </div>
