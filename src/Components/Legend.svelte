@@ -19,59 +19,18 @@
 
 <style>
   .legend {
-    color: #bdbdbd;
-    border-radius: 5px;
-    font: 12px/20px "Lato", sans-serif;
-    padding: 5px;
+    @apply text-gray-400 p-3 z-50 text-sm;
   }
 
-  .legend h4 {
-    margin: 0 0 10px;
-    text-align: center;
-  }
-
-  .legend div span {
-    border-radius: 20%;
-    display: inline-block;
-    height: 10px;
-    margin-right: 5px;
-    width: 18px;
+  .legendspan {
+    @apply inline-block h-2 mr-1 w-3;
   }
 </style>
 
-{#if single && secondgrowth}
+{#if single}
   <div class="legend">
     <div>
-      <span style="background-color: {map_palette_single}" />
-      {'Harvested'}
-    </div>
-    <div>
-      <span style="background-color: {map_palette_sg[1]}" />
-      {'2nd growth'}
-    </div>
-  </div>
-{:else if !single && secondgrowth}
-  <div class="legend">
-    <h4>
-      Years Since
-      <br />
-      Harvested
-    </h4>
-    {#each legend_palette as { value, color }}
-      <div>
-        <span style="background-color: {color}" />
-        {value}
-      </div>
-    {/each}
-    <div>
-      <span style="background-color: {map_palette_sg[1]}" />
-      {'2nd growth'}
-    </div>
-  </div>
-{:else if single && !secondgrowth}
-  <div class="legend">
-    <div>
-      <span style="background-color: {map_palette_single}" />
+      <span class="legendspan" style="background-color: {map_palette_single}" />
       {'Harvested'}
     </div>
   </div>
@@ -80,11 +39,11 @@
     <h4>
       Years Since
       <br />
-      Harvested
+      Harvest
     </h4>
     {#each legend_palette as { value, color }}
       <div>
-        <span style="background-color: {color}" />
+        <span class="legendspan" style="background-color: {color}" />
         {value}
       </div>
     {/each}
