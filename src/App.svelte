@@ -72,7 +72,7 @@
   </Modal>
 </header>
 
-<div class="flex absolute bottom-0 w-full md:w-5/12">
+<div class="flex absolute bottom-0 w-full md:w-7/12 lg:w-6/12 xl:w-5/12">
   <div class="w-10/12 z-50 bg-black bg-opacity-50 p-2">
     <div class="absolute">
       {#if !single}
