@@ -16,4 +16,4 @@
   };
 </script>
 
-<Button caption={'about'} outline={false} on:click={showAbout} />
+<Button caption={'about'} outline={false} on:open-modal={showAbout} />

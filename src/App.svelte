@@ -93,14 +93,14 @@
 
     <!-- <div class="buttons extras increment " /> -->
 
-    <div class="mx-auto px-4 w-11/12">
+    <div class="mx-auto pl-3 w-11/12 -mt-2">
       <Slider class="mdc-slider" bind:value={slider_value} />
     </div>
     <div class="h-40">
-      <!-- <Chart {year} {single} {palette} {map_palette} {map_palette_single} /> -->
+      <Chart {year} {single} {palette} {map_palette} {map_palette_single} />
     </div>
   </div>
-  <div class="w-2/12 p-2 bottom-0 bg-black bg-opacity-50 z-10 text-gray-400 ">
+  <div class="w-2/12 p-2 bottom-0 bg-black bg-opacity-50 z-10 text-gray-400">
     <Legend {palette} {single} {map_palette} {map_palette_single} />
   </div>
 </div>

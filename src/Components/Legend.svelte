@@ -19,7 +19,7 @@
 
 <style>
   .legend {
-    @apply text-gray-400 p-3 z-50 text-sm;
+    @apply text-gray-400 p-3 z-50 text-xs;
   }
 
   .legendspan {
@@ -31,16 +31,16 @@
   <div class="legend">
     <div>
       <span class="legendspan" style="background-color: {map_palette_single}" />
-      {'Harvested'}
+      {'Harvest'}
     </div>
   </div>
 {:else}
   <div class="legend">
-    <h4>
+    <div class="text-xs mb-3">
       Years Since
       <br />
       Harvest
-    </h4>
+    </div>
     {#each legend_palette as { value, color }}
       <div>
         <span class="legendspan" style="background-color: {color}" />
