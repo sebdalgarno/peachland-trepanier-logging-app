@@ -23,9 +23,9 @@
     dispatch("minus-year");
   }
 
-  //   function showFilter() {
-  //     dispatch("show-filter");
-  //   }
+  function openModal() {
+    dispatch("open-modal");
+  }
 </script>
 
 <style>
@@ -36,12 +36,16 @@
 
 {#if outline}
   <button
-    class="border-gray-600 p-2 text-gray-400 rounded-lg text-xs"
-    on:click={addYear}
-    on:click={minusYear}
+    class="border-gray-600 p-2 text-gray-400 rounded-lg text-sm leading-none"
     on:click={singleYear}>
     {caption}
   </button>
 {:else}
-  <button class="p-3 border-0 text-gray-700 text-s" on:click>{caption}</button>
+  <button
+    class="p-3 border-0 text-gray-600 text-sm"
+    on:click={addYear}
+    on:click={minusYear}
+    on:click={openModal}>
+    {caption}
+  </button>
 {/if}
