@@ -3,7 +3,7 @@
   import Legend from "./Components/Legend.svelte";
   import Button from "./Components/Button.svelte";
   import Slider from "@smui/slider";
-  import Barchart from "./Components/Barchart.svelte";
+  import D3Chart from "./Components/d3Chart.svelte";
   import Chart from "./Components/Barchart.svelte";
   import Modal from "svelte-simple-modal";
   import ModalAbout from "./Components/ModalAbout.svelte";
@@ -82,9 +82,8 @@
       {/if}
 
     </div>
-    <div class="text-center">
+    <div class="text-center flex">
       <Button outline={false} caption={'-'} on:minus-year={minusYear} />
-
       <div class="inline-block">
         <p class="text-5xl text-gray-400">{year}</p>
       </div>
@@ -96,8 +95,11 @@
     <div class="mx-auto pl-3 w-11/12 -mt-2">
       <Slider class="mdc-slider" bind:value={slider_value} />
     </div>
-    <div class="h-40">
-      <Chart {year} {single} {palette} {map_palette} {map_palette_single} />
+
+    <div class="">
+      <!-- <Chart {year} {single} {palette} {map_palette} {map_palette_single} /> -->
+      <D3Chart />
+
     </div>
   </div>
   <div class="w-2/12 p-2 bottom-0 bg-black bg-opacity-50 z-10 text-gray-400">

@@ -1,12 +1,12 @@
 export const mapbox_key =
-  "pk.eyJ1Ijoic2ViZGFsZ2Fybm8iLCJhIjoiY2l3ZTQwdTVjMGJ4ZzJ0cXV0ZjdzczZ5cCJ9.c8meCKeLyaBlYui1R5zyyQ";
+  "pk.eyJ1Ijoibm9ydGhiZWFjaGNvbnN1bHRpbmciLCJhIjoiY2tld2ZkdXA1MmZ5cjJxcXZ4aWN5eWRteSJ9.GmGSqnuACz13roMMveTdsw";
 
-export const tileset_id = "mapbox://sebdalgarno.1dciqftn";
+export const tileset_id = "mapbox://northbeachconsulting.6e7tug5m";
 
 export const source_layer = ["logged_simplify", "logged_dissolve"];
 
 export const mapbox_style =
-  "mapbox://styles/sebdalgarno/ciwjnpokv00c82qoirnn3jalz";
+  "mapbox://styles/northbeachconsulting/ckewfmjgp0p0e19l8vyg95sz9";
 
 // export const tileset_base = "mapbox://poissonconsulting.0pagk9ut";
 
