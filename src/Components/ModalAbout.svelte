@@ -11,8 +11,9 @@
     open(About, {
       attribution: attribution,
       tips: tips,
-      data: data
-    });
+      data: data},
+      {styleWindow: {'z-index': 100}}
+    );
   };
 </script>
 

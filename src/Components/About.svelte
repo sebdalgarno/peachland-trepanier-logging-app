@@ -5,16 +5,23 @@
 </script>
 
 <style>
+  .title {
+    @apply text-xl pt-4 pb-1;
+  }
+
+  .text {
+    @apply text-sm text-gray-900;
+  }
 
 </style>
 
-<div class="z-10">
-  <h3>Tips for using the app</h3>
-  <p>{tips}</p>
-  <h3>Data</h3>
-  <p>{data}</p>
-  <h3>Attribution</h3>
-  <p>{attribution}</p>
+<div class="z-50">
+  <p class="title">Tips for using the app</p>
+  <p class="text">{tips}</p>
+  <p class="title">Data</p>
+  <p class="text">{data}</p>
+  <p class="title">Attribution</p>
+  <p class="text">{attribution}</p>
   <img
     class="p-2"
     src="img/COMMONSbcLogo.jpg"

@@ -19,7 +19,7 @@
 
 <style>
   .legend {
-    @apply text-gray-400 p-3 z-50 text-xs;
+    @apply text-gray-500 p-3 z-50 text-xs;
   }
 
   .legendspan {

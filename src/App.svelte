@@ -36,10 +36,6 @@
 
   let caption = "Single Year";
   let year = year_min;
-  let slider_value;
-  $: if (slider_value) {
-    year = Math.floor((slider_value / 100) * (year_max - year_min) + year_min);
-  }
   let single = false;
 
   function toggleSingle() {
@@ -47,13 +43,13 @@
   }
 
   function addYear() {
-    if (year != 2020) {
+    if (year != year_max) {
       year++;
     }
   }
 
   function minusYear() {
-    if (year != 1965) {
+    if (year != year_min) {
       year--;
     }
   }
@@ -65,15 +61,15 @@
 
 <header
   class="invisible absolute py-1 w-full bg-black text-gray-400 text-1.5 p-5
-  bg-opacity-50 z-50 sm:visible">
-  A History of Logging in Peachland and Trepanier Watersheds 1965-2020
-  <Modal>
+  bg-opacity-50 sm:visible" style="z-index: 2;">
+  A History of Logging in Peachland and Trepanier Watersheds
+  <Modal >
     <ModalAbout />
   </Modal>
 </header>
 
 <div class="flex absolute bottom-0 w-full md:w-7/12 lg:w-6/12 xl:w-5/12">
-  <div class="w-10/12 z-50 bg-black bg-opacity-50 p-2">
+  <div class="w-10/12 bg-black bg-opacity-50 p-2" style="z-index: 1;">
     <div class="absolute">
       {#if !single}
         <Button caption={'by year'} on:single-year={toggleSingle} />
@@ -82,27 +78,25 @@
       {/if}
 
     </div>
-    <div class="text-center flex">
+    <div class="text-center flex justify-center">
       <Button outline={false} caption={'-'} on:minus-year={minusYear} />
       <div class="inline-block">
-        <p class="text-5xl text-gray-400">{year}</p>
+        <p class="text-5xl text-gray-500">{year}</p>
       </div>
       <Button outline={false} caption={'+'} on:add-year={addYear} />
     </div>
 
-    <!-- <div class="buttons extras increment " /> -->
-
-    <div class="mx-auto pl-3 w-11/12 -mt-2">
-      <Slider class="mdc-slider" bind:value={slider_value} />
+    <div class="pl-4 w-11/12 -mt-2">
+      <Slider class="mdc-slider" bind:value={year} min={1968} max={2020} step={1} discrete />
     </div>
 
-    <div class="">
-      <!-- <Chart {year} {single} {palette} {map_palette} {map_palette_single} /> -->
-      <D3Chart />
+    <div class="h-40">
+      <Chart {year} {single} {palette} {map_palette} {map_palette_single} />
+      <!-- <D3Chart /> -->
 
     </div>
   </div>
-  <div class="w-2/12 p-2 bottom-0 bg-black bg-opacity-50 z-10 text-gray-400">
+  <div class="w-2/12 pl-4 p-2 bottom-0 bg-black bg-opacity-50 text-gray-400" style="z-index: 1;">
     <Legend {palette} {single} {map_palette} {map_palette_single} />
   </div>
 </div>

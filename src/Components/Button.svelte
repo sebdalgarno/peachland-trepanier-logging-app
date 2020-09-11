@@ -36,7 +36,7 @@
 
 {#if outline}
   <button
-    class="border-gray-600 p-2 text-gray-400 rounded-lg text-sm leading-none"
+    class="border-gray-600 p-2 text-gray-500 rounded-lg text-sm leading-none"
     on:click={singleYear}>
     {caption}
   </button>

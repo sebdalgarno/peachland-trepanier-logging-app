@@ -12,13 +12,13 @@
   export let year = year_min;
   export let single = false;
 
-  const age1 = 9000;
+  const age1 = 900;
   const year0 = year_min;
   const year1 = year_max;
-  const max = 9000;
+  const max = age1
 
   const years = range(year0, year1, 20);
-  const total = range(0, 9000, 100);
+  const total = range(0, age1, 100);
 
   let el;
   let w = 410;
@@ -69,7 +69,7 @@
   .chart {
     padding: 1em;
     position: absolute;
-    width: 80%;
+    width: 70%;
     height: 40%;
     /* min-height: 150px; */
     /* overflow: scroll; */
@@ -100,7 +100,7 @@
   .label {
     position: absolute;
     font-size: 14px;
-    color: #666;
+    /* color: #666; */
     line-height: 1;
     white-space: nowrap;
   }
@@ -141,7 +141,7 @@
   }
 
   .box.data {
-    background-color: #212121;
+    /* background-color: #212121; */
     opacity: 1;
     /* opacity: 0.1; */
   }
@@ -187,10 +187,10 @@
     <Pancake.Chart {x1} {x2} y1={0} y2={max}>
       <Pancake.Grid horizontal count={5} let:value let:first>
         <div class="grid-line horizontal" />
-        <span class="y label">{format(value)}</span>
+        <span class="y label text-gray-700">{format(value)}</span>
       </Pancake.Grid>
       <Pancake.Columns {data} x={d => d.year} y={d => d.total} width={1.0}>
-        <div class="box data" />
+        <div class="box data bg-gray-800" />
       </Pancake.Columns>
       {#if single}
         {#each selected as select, i}
@@ -224,7 +224,7 @@
   <div class="foreground">
     <Pancake.Chart {x1} {x2} y1={0} y2={max}>
       <Pancake.Grid vertical count={7} let:value>
-        <span class="x label">{value}</span>
+        <span class="x label text-gray-700">{value}</span>
       </Pancake.Grid>
     </Pancake.Chart>
   </div>
