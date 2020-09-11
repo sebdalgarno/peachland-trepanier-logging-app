@@ -34,12 +34,10 @@
   let map;
 
   function filterSingle() {
-    map.setFilter("logged_simp", ["==", "year", year]);
     map.setFilter("logged", ["==", "year", year]);
   }
 
   function filterAccumulate() {
-    map.setFilter("logged_simp", ["<=", "year", year]);
     map.setFilter("logged", ["<=", "year", year]);
   }
 
@@ -53,12 +51,10 @@
   };
 
   function setPalette(year) {
-    map.setPaintProperty("logged_simp", "fill-color", paint_property(year));
     map.setPaintProperty("logged", "fill-color", paint_property(year));
   }
 
   function setPaletteSingle(year) {
-    map.setPaintProperty("logged_simp", "fill-color", map_palette_single);
     map.setPaintProperty("logged", "fill-color", map_palette_single);
   }
 
@@ -102,25 +98,9 @@
         url: tileset_id
       });
       map.addLayer({
-        id: "logged_simp",
-        source: "logged",
-        "source-layer": source_layer[0],
-        type: "fill",
-        filter: ["==", "year", year],
-        paint: {
-          "fill-color": [
-            "match",
-            ["-", year, ["number", ["get", "year"]]],
-            ...map_palette,
-            "#AAAAAA"
-          ]
-        },
-        "fill-opacity": fill_opacity
-      });
-      map.addLayer({
         id: "logged",
         source: "logged",
-        "source-layer": source_layer[1],
+        "source-layer": "logging",
         type: "fill",
         filter: ["==", "year", year],
         paint: {
@@ -133,31 +113,6 @@
         },
         "fill-opacity": fill_opacity
       });
-      // map.addSource("parks", {
-      //   type: "vector",
-      //   url: tileset_parks
-      // });
-      // map.addLayer({
-      //   id: "parks",
-      //   type: "symbol",
-      //   source: "parks",
-      //   "source-layer": "parks2-a8pz3j",
-      //   layout: {
-      //     "text-field": [
-      //       "format",
-      //       ["get", "name"],
-      //       { "font-scale": 1.1 },
-      //       "\n",
-      //       {},
-      //       ["get", "name2"]
-      //     ],
-      //     // "text-field": ["get", "name"],
-      //     "text-variable-anchor": ["top", "bottom", "left", "right"],
-      //     "text-radial-offset": 0.5,
-      //     "text-justify": "auto",
-      //     "icon-image": ["concat", ["get", "icon"], "-12"]
-      //   }
-      // });
       map.addControl(new mapbox.AttributionControl(), "bottom-right");
       map.fitBounds(bounds);
       done = true;
@@ -168,15 +123,12 @@
       closeOnClick: false
     });
 
-    map.on("mouseenter", "logged_simp", function(e) {
+    map.on("mouseenter", "logged", function(e) {
       // Change the cursor style as a UI indicator.
       map.getCanvas().style.cursor = "pointer";
 
       var coordinates = e.lngLat;
-      var description = e.features[0].properties.year;
-
-      console.log(coordinates);
-      console.log(description);
+      var description = "Year: " + e.features[0].properties.year + "<br/>" + "Area logged (ha): " + Math.round(e.features[0].properties.area);
 
       // Ensure that if the map is zoomed out such that multiple
       // copies of the feature are visible, the popup appears
@@ -193,7 +145,7 @@
         .addTo(map);
     });
 
-    map.on("mouseleave", "logged_simp", function() {
+    map.on("mouseleave", "logged", function() {
       map.getCanvas().style.cursor = "";
       popup.remove();
     });
@@ -212,7 +164,7 @@
   }
 
   .mapbox-popup {
-    z-index: 1000;
+    z-index: 100;
     max-width: 400px;
     font: 12px/20px "Helvetica Neue", Arial, Helvetica, sans-serif;
   }
