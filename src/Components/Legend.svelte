@@ -31,7 +31,7 @@
   <div class="legend">
     <div>
       <span class="legendspan" style="background-color: {map_palette_single}" />
-      {'Harvest'}
+      {'Harvested'}
     </div>
   </div>
 {:else}
@@ -39,7 +39,7 @@
     <div class="text-xs">
       Years Since
       <br />
-      Harvest
+      Harvested
     </div>
     {#each legend_palette as { value, color }}
       <div>
