@@ -68,8 +68,8 @@
   </Modal>
 </header>
 
-<div class="flex absolute bottom-0 w-full md:w-7/12 lg:w-6/12 xl:w-5/12">
-  <div class="w-10/12 bg-black bg-opacity-50 p-2" style="z-index: 1;">
+<div class="flex absolute bottom-0 w-full md:w-6/12 lg:w-6/12 xl:w-5/12 " style="height: 330px;">
+  <div class="w-full bg-black bg-opacity-50 p-2" style="z-index: 1;">
     <div class="absolute">
       {#if !single}
         <Button caption={'by year'} on:single-year={toggleSingle} />
@@ -86,19 +86,23 @@
       <Button outline={false} caption={'+'} on:add-year={addYear} />
     </div>
 
-    <div class="pl-4 w-11/12 -mt-2">
+    <div class="pl-5 w-10/12 -mt-2">
       <Slider class="mdc-slider" bind:value={year} min={1968} max={2020} step={1} discrete />
     </div>
 
-    <div class="h-40">
+    <div class="">
       <Chart {year} {single} {palette} {map_palette} {map_palette_single} />
       <!-- <D3Chart /> -->
 
     </div>
   </div>
-  <div class="w-2/12 pl-4 p-2 bottom-0 bg-black bg-opacity-50 text-gray-400" style="z-index: 1;">
-    <Legend {palette} {single} {map_palette} {map_palette_single} />
-  </div>
+
+  
 </div>
+
+<div class=" absolute invisible md:visible p-0 md:p-2 rounded-lg bg-black bg-opacity-50 text-gray-400" style="z-index: 1; top: 75px; right: 10px;">
+  <Legend {palette} {single} {map_palette} {map_palette_single} />
+</div>
+
 
 <Map {year} {single} {map_palette} {map_palette_single} {bounds} />

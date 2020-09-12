@@ -19,11 +19,11 @@
 
 <style>
   .legend {
-    @apply text-gray-500 p-3 z-50 text-xs;
+    @apply text-gray-500 p-2 z-50 text-xs;
   }
 
   .legendspan {
-    @apply inline-block h-2 mr-1 w-3;
+    @apply inline-block h-2 mr-1 w-3 text-xs;
   }
 </style>
 
@@ -36,7 +36,7 @@
   </div>
 {:else}
   <div class="legend">
-    <div class="text-xs mb-3">
+    <div class="text-xs">
       Years Since
       <br />
       Harvest

@@ -69,7 +69,7 @@
   .chart {
     padding: 1em;
     position: absolute;
-    width: 70%;
+    width: 78%;
     height: 40%;
     /* min-height: 150px; */
     /* overflow: scroll; */

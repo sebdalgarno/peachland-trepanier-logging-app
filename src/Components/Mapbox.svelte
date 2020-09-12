@@ -32,6 +32,7 @@
 
   let container;
   let map;
+  var hoveredStateId = null;
 
   function filterSingle() {
     map.setFilter("logged", ["==", "year", year]);
@@ -95,7 +96,8 @@
       });
       map.addSource("logged", {
         type: "vector",
-        url: tileset_id
+        url: tileset_id,
+        promoteId: "id"
       });
       map.addLayer({
         id: "logged",
@@ -104,14 +106,11 @@
         type: "fill",
         filter: ["==", "year", year],
         paint: {
-          "fill-color": [
-            "match",
-            ["-", year, ["number", ["get", "year"]]],
-            ...map_palette,
-            "#AAAAAA"
-          ]
-        },
-        "fill-opacity": fill_opacity
+          'fill-opacity': [
+'case',
+['boolean', ['feature-state', 'hover'], false],
+0.5,
+1]}
       });
       map.addControl(new mapbox.AttributionControl(), "bottom-right");
       map.fitBounds(bounds);
@@ -123,19 +122,23 @@
       closeOnClick: false
     });
 
-    map.on("mouseenter", "logged", function(e) {
+    map.on("mousemove", "logged", function(e) {
       // Change the cursor style as a UI indicator.
       map.getCanvas().style.cursor = "pointer";
 
       var coordinates = e.lngLat;
       var description = "Year: " + e.features[0].properties.year + "<br/>" + "Area logged (ha): " + Math.round(e.features[0].properties.area);
 
+      var description = `
+      <p class='font-bold inline-block'>${Math.round(e.features[0].properties.area)} </p> 
+      <p class='inline-block'>hectares logged in</p>
+      <p class='font-bold inline-block'>${e.features[0].properties.year}</p>`;
       // Ensure that if the map is zoomed out such that multiple
       // copies of the feature are visible, the popup appears
       // over the copy being pointed to.
-      while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-      }
+      // while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+      //   coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+      // }
 
       // Populate the popup and set its coordinates
       // based on the feature found.
@@ -145,9 +148,32 @@
         .addTo(map);
     });
 
+    map.on('mousemove', 'logged', function (e) {
+if (e.features.length > 0) {
+if (hoveredStateId) {
+map.setFeatureState(
+{ source: 'logged', id: hoveredStateId, sourceLayer: 'logging' },
+{ hover: false }
+);
+}
+hoveredStateId = e.features[0].id;
+map.setFeatureState(
+{ source: 'logged', id: hoveredStateId, sourceLayer: 'logging'  },
+{ hover: true }
+);
+}
+});
+
     map.on("mouseleave", "logged", function() {
       map.getCanvas().style.cursor = "";
       popup.remove();
+      if (hoveredStateId) {
+map.setFeatureState(
+{ source: 'logged', id: hoveredStateId, sourceLayer: 'logging'  },
+{ hover: false }
+);
+}
+hoveredStateId = null;
     });
     // map.moveLayer("basemap");
     // map.moveLayer("logged_simp");
