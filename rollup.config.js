@@ -51,7 +51,7 @@ export default {
 
     development && livereload({ watch: "./public" }),
 
-    !development && terser({ sourcemap: true }),
+    // !development && terser({ sourcemap: true }),
   ],
   watch: {
     clearScreen: false,
