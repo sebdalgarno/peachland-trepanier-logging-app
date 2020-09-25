@@ -9,7 +9,7 @@
     coordinates,
     source_layer,
     mapbox_style,
-    // tileset_base,
+    tileset_base,
     // tileset_parks,
     base_colors
   } from "../consts";
@@ -81,10 +81,10 @@
     });
 
     map.on("load", function() {
-      // map.addSource("basemap", {
-      //   type: "raster",
-      //   url: tileset_base
-      // });
+      map.addSource("basemap", {
+        type: "raster",
+        url: tileset_base
+      });
       map.addLayer({
         id: "overlay",
         source: "basemap",

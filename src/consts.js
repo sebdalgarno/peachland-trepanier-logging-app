@@ -8,7 +8,7 @@ export const source_layer = ["logged_simplify", "logged_dissolve"];
 export const mapbox_style =
   "mapbox://styles/northbeachconsulting/ckewfmjgp0p0e19l8vyg95sz9";
 
-// export const tileset_base = "mapbox://poissonconsulting.0pagk9ut";
+export const tileset_base = "mapbox://northbeachconsulting.bzie7nt2";
 
 export const coordinates = [-119.8738, 49.86277];
 

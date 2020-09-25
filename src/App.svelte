@@ -61,7 +61,7 @@
 
 <header
   class="invisible absolute py-1 w-full bg-black text-gray-400 text-1.5 p-5
-  bg-opacity-50 sm:visible" style="z-index: 2;">
+  bg-opacity-75 sm:visible" style="z-index: 2;">
   A History of Logging in Peachland and Trepanier Watersheds
   <Modal >
     <ModalAbout />
@@ -69,7 +69,7 @@
 </header>
 
 <div class="flex absolute bottom-0 w-full md:w-6/12 lg:w-6/12 xl:w-5/12 " style="height: 330px;">
-  <div class="w-full bg-black bg-opacity-50 p-2" style="z-index: 1;">
+  <div class="w-full bg-black bg-opacity-75 p-2" style="z-index: 1;">
     <div class="absolute">
       {#if !single}
         <Button caption={'by year'} on:single-year={toggleSingle} />
@@ -100,7 +100,7 @@
   
 </div>
 
-<div class=" absolute invisible md:visible p-0 md:p-2 rounded-lg bg-black bg-opacity-50 text-gray-400" style="z-index: 1; top: 75px; right: 10px;">
+<div class=" absolute invisible md:visible p-0 md:p-2 rounded-lg bg-black bg-opacity-75 text-gray-400" style="z-index: 1; top: 75px; right: 10px;">
   <Legend {palette} {single} {map_palette} {map_palette_single} />
 </div>
 
