@@ -18,6 +18,7 @@
   export let single = false;
   export let map_palette;
   export let map_palette_single;
+  export let map_palette_planned;
   export let bounds;
 
   // let map_palette_sg = ["true", "white", "false", "black"];
@@ -45,11 +46,30 @@
   let paint_property = year => {
     return [
       "match",
-      ["-", year, ["number", ["get", "year"]]],
-      ...map_palette,
-      base_colors[1]
+      ["string", ["get", "planned"]],
+      ...map_palette_planned,
+      [
+        "match",
+        ["-", year, ["number", ["get", "year"]]],
+        ...map_palette,
+        map_palette[1]
+      ]
     ];
   };
+
+  // let paint_property_secondgrowth = year => {
+  //   return [
+  //     "match",
+  //     ["string", ["get", "SecondGrowth"]],
+  //     ...map_palette_sg,
+  //     [
+  //       "match",
+  //       ["-", year, ["number", ["get", "YearHarvested"]]],
+  //       ...map_palette,
+  //       "#AAAAAA"
+  //     ]
+  //   ];
+  // };
 
   function setPalette(year) {
     map.setPaintProperty("logged", "fill-color", paint_property(year));
@@ -127,12 +147,10 @@
       map.getCanvas().style.cursor = "pointer";
 
       var coordinates = e.lngLat;
-      var description = "Year: " + e.features[0].properties.year + "<br/>" + "Area logged (ha): " + Math.round(e.features[0].properties.area);
+      // var description = "Year: " + e.features[0].properties.year + "<br/>" + "Area logged (ha): " + Math.round(e.features[0].properties.area);
 
       var description = `
-      <p class='font-bold inline-block'>${Math.round(e.features[0].properties.area)} </p> 
-      <p class='inline-block'>hectares logged in</p>
-      <p class='font-bold inline-block'>${e.features[0].properties.year}</p>`;
+      <p class='inline-block'>${e.features[0].properties.description}</p>`;
       // Ensure that if the map is zoomed out such that multiple
       // copies of the feature are visible, the popup appears
       // over the copy being pointed to.

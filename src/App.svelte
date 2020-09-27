@@ -33,6 +33,8 @@
     map_palette.push(palette[i]);
   }
   let map_palette_single = map_palette[11];
+  let map_palette_planned = ["true", "#E6007E"];
+
 
   let caption = "Single Year";
   let year = year_min;
@@ -105,4 +107,4 @@
 </div>
 
 
-<Map {year} {single} {map_palette} {map_palette_single} {bounds} />
+<Map {year} {single} {map_palette} {map_palette_single} {map_palette_planned} {bounds} />
