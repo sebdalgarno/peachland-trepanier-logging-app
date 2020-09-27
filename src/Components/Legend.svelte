@@ -14,6 +14,7 @@
     { value: "30", color: palette[30] },
     { value: "40", color: palette[40] },
     { value: "> 50", color: palette[50] },
+    {value: ""},
     {value: "Planned", color: map_palette_planned[1]},
     {value: "Bare", color: map_palette_bare[1]}
     // { value: 116, color: palette[116] }
