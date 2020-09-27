@@ -19,6 +19,7 @@
   export let map_palette;
   export let map_palette_single;
   export let map_palette_planned;
+  export let map_palette_bare;
   export let bounds;
 
   // let map_palette_sg = ["true", "white", "false", "black"];
@@ -46,6 +47,10 @@
   let paint_property = year => {
     return [
       "match",
+      ["string", ["get", "stay_bare"]],
+      ...map_palette_bare,
+      [
+        "match",
       ["string", ["get", "planned"]],
       ...map_palette_planned,
       [
@@ -53,6 +58,20 @@
         ["-", year, ["number", ["get", "year"]]],
         ...map_palette,
         map_palette[1]
+      ]]
+    ];
+  };
+
+  let paint_property_single = year => {
+    return [
+      "match",
+      ["string", ["get", "stay_bare"]],
+      ...map_palette_bare,
+      [
+        "match",
+      ["string", ["get", "planned"]],
+      ...map_palette_planned,
+      map_palette_single
       ]
     ];
   };
@@ -76,7 +95,7 @@
   }
 
   function setPaletteSingle(year) {
-    map.setPaintProperty("logged", "fill-color", map_palette_single);
+    map.setPaintProperty("logged", "fill-color", paint_property_single(year));
   }
 
   function filterLoggedAreas(year, single) {
@@ -147,7 +166,6 @@
       map.getCanvas().style.cursor = "pointer";
 
       var coordinates = e.lngLat;
-      // var description = "Year: " + e.features[0].properties.year + "<br/>" + "Area logged (ha): " + Math.round(e.features[0].properties.area);
 
       var description = `
       <p class='inline-block'>${e.features[0].properties.description}</p>`;

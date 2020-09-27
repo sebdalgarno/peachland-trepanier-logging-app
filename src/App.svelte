@@ -34,6 +34,7 @@
   }
   let map_palette_single = map_palette[11];
   let map_palette_planned = ["true", "#E6007E"];
+  let map_palette_bare = ["true", map_palette[1]]
 
 
   let caption = "Single Year";
@@ -92,8 +93,8 @@
       <Slider class="mdc-slider" bind:value={year} min={1968} max={2020} step={1} discrete />
     </div>
 
-    <div class="">
-      <Chart {year} {single} {palette} {map_palette} {map_palette_single} />
+    <div >
+      <Chart {year} {single} {palette} {map_palette} {map_palette_single} {map_palette_planned} />
       <!-- <D3Chart /> -->
 
     </div>
@@ -103,8 +104,8 @@
 </div>
 
 <div class=" absolute invisible md:visible p-0 md:p-2 rounded-lg bg-black bg-opacity-75 text-gray-400" style="z-index: 1; top: 75px; right: 10px;">
-  <Legend {palette} {single} {map_palette} {map_palette_single} />
+  <Legend {palette} {single} {map_palette} {map_palette_single} {map_palette_planned} />
 </div>
 
 
-<Map {year} {single} {map_palette} {map_palette_single} {map_palette_planned} {bounds} />
+<Map {year} {single} {map_palette} {map_palette_single} {map_palette_planned} {map_palette_bare} {bounds} />

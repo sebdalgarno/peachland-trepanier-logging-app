@@ -8,6 +8,7 @@
 
   export let palette;
   export let map_palette;
+  export let map_palette_planned;
   export let map_palette_single;
   export let year = year_min;
   export let single = false;
@@ -217,7 +218,17 @@
           </Pancake.Box>
         {/each}
       {/if}
-      }
+      {#each selected as select, i}
+          <Pancake.Box
+            x1={select.year - 0.5}
+            x2={select.year + 0.5}
+            y1={0}
+            y2={select.planned}>
+            <div
+              class="box selected"
+              style="background-color: {map_palette_planned[1]}" />
+          </Pancake.Box>
+        {/each}
     </Pancake.Chart>
   </div>
 
