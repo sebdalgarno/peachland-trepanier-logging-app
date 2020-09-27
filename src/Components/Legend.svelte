@@ -5,6 +5,7 @@
   export let map_palette;
   export let map_palette_planned;
   export let map_palette_single;
+  export let map_palette_bare;
 
   let legend_palette = [
     { value: "0", color: palette[0] },
@@ -13,13 +14,15 @@
     { value: "30", color: palette[30] },
     { value: "40", color: palette[40] },
     { value: "> 50", color: palette[50] },
-    {value: "Planned", color: map_palette_planned[1]}
+    {value: "Planned", color: map_palette_planned[1]},
+    {value: "Bare", color: map_palette_bare[1]}
     // { value: 116, color: palette[116] }
   ];
 
   let legend_single = [
     { value: "Harvested", color: map_palette_single },
-    {value: "Planned", color: map_palette_planned[1]}
+    {value: "Planned", color: map_palette_planned[1]},
+    {value: "Bare", color: map_palette_bare[1]}
     // { value: 116, color: palette[116] }
   ];
 </script>
