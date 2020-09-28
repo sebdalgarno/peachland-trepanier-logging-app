@@ -6,7 +6,7 @@ export const tileset_id = "mapbox://northbeachconsulting.2h0h8yen";
 export const source_layer = ["logged_simplify", "logged_dissolve"];
 
 export const mapbox_style =
-  "mapbox://styles/northbeachconsulting/ckewfmjgp0p0e19l8vyg95sz9";
+  "mapbox://styles/northbeachconsulting/ckfmuvs0700ag1aqx72kk9wlw";
 
 export const tileset_base = "mapbox://northbeachconsulting.bzie7nt2";
 

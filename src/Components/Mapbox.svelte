@@ -232,6 +232,6 @@ hoveredStateId = null;
   }
 </style>
 
-<div class="map" bind:this={container}>
+<div class="map bg-black" bind:this={container}>
   <slot />
 </div>
