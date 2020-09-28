@@ -21,4 +21,4 @@ export const year_min = 1968;
 
 export const year_max = 2020;
 
-export const base_colors = ["#ffff14", "#e45c31"];
+export const base_colors = ["#ffff14", "#d44e25"];
