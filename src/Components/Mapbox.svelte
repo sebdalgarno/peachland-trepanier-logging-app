@@ -153,8 +153,8 @@
           'fill-opacity': [
 'case',
 ['boolean', ['feature-state', 'hover'], false],
-0.1,
-0.3],
+0.7,
+0.4],
         'fill-color': 'green'}});
       map.addSource("logged", {
         type: "vector",

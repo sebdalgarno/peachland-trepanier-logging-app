@@ -16,14 +16,16 @@
     { value: "> 50", color: palette[50] },
     {value: ""},
     {value: "Planned", color: map_palette_planned[1]},
-    {value: "Bare", color: map_palette_bare[1]}
+    {value: "Bare", color: map_palette_bare[1]},
+    {value: "Park", color: "green"}
     // { value: 116, color: palette[116] }
   ];
 
   let legend_single = [
     { value: "Harvested", color: map_palette_single },
     {value: "Planned", color: map_palette_planned[1]},
-    {value: "Bare", color: map_palette_bare[1]}
+    {value: "Bare", color: map_palette_bare[1]},
+    {value: "Park", color: "green"}
     // { value: 116, color: palette[116] }
   ];
 </script>
