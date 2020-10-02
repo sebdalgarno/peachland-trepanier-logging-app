@@ -137,10 +137,7 @@
           "raster-opacity": 1
         }
       });
-      map.addSource("wsheds_line", {
-        type: "vector",
-        url: tileset_wsheds_lines
-      });
+     
     
       map.addSource("parks", {
         type: "vector",
@@ -153,14 +150,12 @@
         "source-layer": "parks",
         type: "fill",
         paint: {
-          'fill-opacity': 0.3,
-        'fill-color': 'green'},
-        paint: {
           'fill-opacity': [
 'case',
 ['boolean', ['feature-state', 'hover'], false],
 0.1,
-0.3]}
+0.3],
+        'fill-color': 'green'}});
       map.addSource("logged", {
         type: "vector",
         url: tileset_logging,
@@ -179,6 +174,10 @@
 0.5,
 1]}
       });
+       map.addSource("wsheds_line", {
+        type: "vector",
+        url: tileset_wsheds_lines
+      });
       map.addLayer({
         id: "wsheds_line",
         source: "wsheds_line",
@@ -188,6 +187,7 @@
           'line-width': 2,
           'line-color': "black"
       }});
+      
       map.addSource("parks_line", {
         type: "vector",
         url: tileset_parks_lines
@@ -211,6 +211,7 @@
       closeOnClick: false
     });
 
+        /////// hover popups for logging areas
     map.on("mousemove", "logged", function(e) {
       // Change the cursor style as a UI indicator.
       map.getCanvas().style.cursor = "pointer";
@@ -261,8 +262,54 @@ map.setFeatureState(
 }
 hoveredStateId = null;
     });
-    // map.moveLayer("basemap");
-    // map.moveLayer("logged_simp");
+
+    /////// hover popups for parks
+    var popup_parks = new mapbox.Popup({
+      closeButton: false,
+      closeOnClick: false
+    });
+
+    map.on("mousemove", "parks", function(e) {
+      // Change the cursor style as a UI indicator.
+      map.getCanvas().style.cursor = "pointer";
+
+      var coordinates = e.lngLat;
+
+      var description = `
+      <p class='inline-block'>${e.features[0].properties.description}</p>`;
+      popup_parks
+        .setLngLat(coordinates)
+        .setHTML(description)
+        .addTo(map);
+    });
+
+    map.on('mousemove', 'parks', function (e) {
+if (e.features.length > 0) {
+if (hoveredStateId) {
+map.setFeatureState(
+{ source: 'parks', id: hoveredStateId, sourceLayer: 'parks' },
+{ hover: false }
+);
+}
+hoveredStateId = e.features[0].id;
+map.setFeatureState(
+{ source: 'parks', id: hoveredStateId, sourceLayer: 'parks'  },
+{ hover: true }
+);
+}
+});
+
+    map.on("mouseleave", "parks", function() {
+      map.getCanvas().style.cursor = "";
+      popup_parks.remove();
+      if (hoveredStateId) {
+map.setFeatureState(
+{ source: 'parks', id: hoveredStateId, sourceLayer: 'parks'  },
+{ hover: false }
+);
+}
+hoveredStateId = null;
+    });
   });
 </script>
 
