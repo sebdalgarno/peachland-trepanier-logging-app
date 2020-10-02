@@ -5,7 +5,11 @@
   import {
     year_min,
     year_max,
-    tileset_id,
+    tileset_logging,
+    tileset_wsheds,
+    tileset_parks,
+    tileset_wsheds_lines,
+    tileset_parks_lines,
     coordinates,
     source_layer,
     mapbox_style,
@@ -133,9 +137,33 @@
           "raster-opacity": 1
         }
       });
+      map.addSource("wsheds_line", {
+        type: "vector",
+        url: tileset_wsheds_lines
+      });
+    
+      map.addSource("parks", {
+        type: "vector",
+        url: tileset_parks,
+        promoteId: "description"
+      });
+      map.addLayer({
+        id: "parks",
+        source: "parks",
+        "source-layer": "parks",
+        type: "fill",
+        paint: {
+          'fill-opacity': 0.3,
+        'fill-color': 'green'},
+        paint: {
+          'fill-opacity': [
+'case',
+['boolean', ['feature-state', 'hover'], false],
+0.1,
+0.3]}
       map.addSource("logged", {
         type: "vector",
-        url: tileset_id,
+        url: tileset_logging,
         promoteId: "id"
       });
       map.addLayer({
@@ -151,6 +179,28 @@
 0.5,
 1]}
       });
+      map.addLayer({
+        id: "wsheds_line",
+        source: "wsheds_line",
+        "source-layer": "wsheds_line",
+        type: "line",
+        paint: {
+          'line-width': 2,
+          'line-color': "black"
+      }});
+      map.addSource("parks_line", {
+        type: "vector",
+        url: tileset_parks_lines
+      });
+      map.addLayer({
+        id: "parks_line",
+        source: "parks_line",
+        "source-layer": "parks_line",
+        type: "line",
+        paint: {
+          'line-width': 1,
+          'line-color': "black"
+      }});
       map.addControl(new mapbox.AttributionControl(), "bottom-right");
       map.fitBounds(bounds);
       done = true;

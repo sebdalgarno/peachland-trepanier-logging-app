@@ -1,14 +1,18 @@
 export const mapbox_key =
   "pk.eyJ1Ijoibm9ydGhiZWFjaGNvbnN1bHRpbmciLCJhIjoiY2tld2ZkdXA1MmZ5cjJxcXZ4aWN5eWRteSJ9.GmGSqnuACz13roMMveTdsw";
 
-export const tileset_id = "mapbox://northbeachconsulting.2h0h8yen";
+export const tileset_logging = "mapbox://northbeachconsulting.2h0h8yen";
+export const tileset_wsheds = "mapbox://northbeachconsulting.dq4t1xyw";
+export const tileset_parks = "mapbox://northbeachconsulting.dehjsfte";
+export const tileset_parks_lines = "mapbox://northbeachconsulting.cypf6r44";
+export const tileset_wsheds_lines = "mapbox://northbeachconsulting.5uoqgxm0";
 
 export const source_layer = ["logged_simplify", "logged_dissolve"];
 
 export const mapbox_style =
   "mapbox://styles/northbeachconsulting/ckfmuvs0700ag1aqx72kk9wlw";
 
-export const tileset_base = "mapbox://northbeachconsulting.bzie7nt2";
+export const tileset_base = "mapbox://northbeachconsulting.0q6r8ewi";
 
 export const coordinates = [-119.8738, 49.86277];
 
