@@ -45,14 +45,14 @@
     map.setFilter("logged", ["==", "year", year]);
     map.setFilter("parks", ["<=", "year", year]);
     map.setFilter("feature_labels", ["<=", "year", year]);
-    map.setFilter("parks_line", ["<=", "year", year]);
+    // map.setFilter("parks_line", ["<=", "year", year]);
   }
 
   function filterAccumulate() {
     map.setFilter("logged", ["<=", "year", year]);
     map.setFilter("parks", ["<=", "year", year]);
     map.setFilter("feature_labels", ["<=", "year", year]);
-    map.setFilter("parks_line", ["<=", "year", year]);
+    // map.setFilter("parks_line", ["<=", "year", year]);
   }
 
   let paint_property = year => {
@@ -194,19 +194,19 @@
           'line-color': "black"
       }});
      
-      map.addSource("parks_line", {
-        type: "vector",
-        url: tileset_parks_lines
-      });
-      map.addLayer({
-        id: "parks_line",
-        source: "parks_line",
-        "source-layer": "parks_line",
-        type: "line",
-        paint: {
-          'line-width': 1,
-          'line-color': "black"
-      }});
+      // map.addSource("parks_line", {
+      //   type: "vector",
+      //   url: tileset_parks_lines
+      // });
+      // map.addLayer({
+      //   id: "parks_line",
+      //   source: "parks_line",
+      //   "source-layer": "parks_line",
+      //   type: "line",
+      //   paint: {
+      //     'line-width': 1,
+      //     'line-color': "black"
+      // }});
       map.addSource("feature_labels", {
         type: "vector",
         url: tileset_feature_labels
