@@ -4,8 +4,8 @@ export const mapbox_key =
 export const tileset_logging = "mapbox://northbeachconsulting.2h0h8yen";
 export const tileset_wsheds = "mapbox://northbeachconsulting.dq4t1xyw";
 export const tileset_parks = "mapbox://northbeachconsulting.91y17on6";
-export const tileset_parks_lines = "mapbox://northbeachconsulting.cypf6r44";
-export const tileset_wsheds_lines = "mapbox://northbeachconsulting.5uoqgxm0";
+export const tileset_parks_lines = "mapbox://northbeachconsulting.5qub0lj0";
+export const tileset_wsheds_lines = "mapbox://northbeachconsulting.avbnkebn";
 export const tileset_feature_labels = "mapbox://northbeachconsulting.5r80aon3";
 
 export const source_layer = ["logged_simplify", "logged_dissolve"];
