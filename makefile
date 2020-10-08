@@ -13,11 +13,14 @@ parks:
 
 parks_line:
 	tippecanoe -zg -o data/parks_line.mbtiles --coalesce-densest-as-needed data/parks_line.geojson --force
-	
 
+feature_labels:
+	tippecanoe -zg -o data/feature_labels.mbtiles --coalesce-densest-as-needed data/feature_labels.geojson --force
+	
 maps:
 	make logging
 	make wsheds
 	make parks
 	make wsheds_line
 	make parks_line
+	make feature_labels

@@ -14,6 +14,7 @@
     source_layer,
     mapbox_style,
     tileset_base,
+    tileset_feature_labels,
     // tileset_parks,
     base_colors
   } from "../consts";
@@ -42,10 +43,16 @@
 
   function filterSingle() {
     map.setFilter("logged", ["==", "year", year]);
+    map.setFilter("parks", ["<=", "year", year]);
+    map.setFilter("feature_labels", ["<=", "year", year]);
+    map.setFilter("parks_line", ["<=", "year", year]);
   }
 
   function filterAccumulate() {
     map.setFilter("logged", ["<=", "year", year]);
+    map.setFilter("parks", ["<=", "year", year]);
+    map.setFilter("feature_labels", ["<=", "year", year]);
+    map.setFilter("parks_line", ["<=", "year", year]);
   }
 
   let paint_property = year => {
@@ -138,7 +145,6 @@
         }
       });
      
-    
       map.addSource("parks", {
         type: "vector",
         url: tileset_parks,
@@ -154,7 +160,7 @@
 'case',
 ['boolean', ['feature-state', 'hover'], false],
 0.7,
-0.4],
+0.5],
         'fill-color': 'green'}});
       map.addSource("logged", {
         type: "vector",
@@ -187,7 +193,7 @@
           'line-width': 2,
           'line-color': "black"
       }});
-      
+     
       map.addSource("parks_line", {
         type: "vector",
         url: tileset_parks_lines
@@ -201,6 +207,22 @@
           'line-width': 1,
           'line-color': "black"
       }});
+      map.addSource("feature_labels", {
+        type: "vector",
+        url: tileset_feature_labels
+      });
+      map.addLayer({
+        id: "feature_labels",
+        source: "feature_labels",
+        "source-layer": "feature_labels",
+        filter: ["==", "year", year],
+        type: "symbol",
+        layout: {
+'text-field': ['get', 'label'],
+'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
+'text-radial-offset': 0.5,
+'text-justify': 'auto'
+}});
       map.addControl(new mapbox.AttributionControl(), "bottom-right");
       map.fitBounds(bounds);
       done = true;
