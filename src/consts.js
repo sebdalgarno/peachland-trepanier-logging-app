@@ -1,12 +1,12 @@
 export const mapbox_key =
   "pk.eyJ1Ijoibm9ydGhiZWFjaGNvbnN1bHRpbmciLCJhIjoiY2tld2ZkdXA1MmZ5cjJxcXZ4aWN5eWRteSJ9.GmGSqnuACz13roMMveTdsw";
 
-export const tileset_logging = "mapbox://northbeachconsulting.2h0h8yen";
+export const tileset_logging = "mapbox://northbeachconsulting.07so9p28";
 export const tileset_wsheds = "mapbox://northbeachconsulting.dq4t1xyw";
 export const tileset_parks = "mapbox://northbeachconsulting.91y17on6";
 export const tileset_parks_lines = "mapbox://northbeachconsulting.5qub0lj0";
 export const tileset_wsheds_lines = "mapbox://northbeachconsulting.avbnkebn";
-export const tileset_feature_labels = "mapbox://northbeachconsulting.5r80aon3";
+export const tileset_feature_labels = "mapbox://northbeachconsulting.0rypwl4m";
 
 export const source_layer = ["logged_simplify", "logged_dissolve"];
 

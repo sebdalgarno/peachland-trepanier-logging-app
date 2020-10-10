@@ -14,7 +14,7 @@
   export let year = year_min;
   export let single = false;
 
-  const age1 = 900;
+  const age1 = 1000;
   const year0 = year_min;
   const year1 = year_max;
   const max = age1
